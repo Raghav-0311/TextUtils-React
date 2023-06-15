@@ -6,21 +6,25 @@ function TextForm(props) {
   const handleUpClick = () => {
     const newText = text.toUpperCase();
     setText(newText);
+    props.showAlert("converted to uppercase", "success");
   };
 
   const handleLoClick = () => {
     const newText = text.toLowerCase();
     setText(newText);
+    props.showAlert("converted to lowercase", "success");
   };
 
   const handleRevClick = () => {
     let newText = text.split(" ").reverse().join(" ");
     setText(newText);
+    props.showAlert("text reversed", "success");
   };
 
   const handleClearClick = () => {
     const newText = "";
     setText(newText);
+    props.showAlert("text area cleared", "success");
   };
 
   const handleOnChange = (e) => {
@@ -31,11 +35,13 @@ function TextForm(props) {
     let text = document.getElementById("myBox");
     text.select();
     navigator.clipboard.writeText(text.value);
+    props.showAlert("text copied", "success");
   };
 
   const handleExtraSpace = () => {
     let newText = text.split(/[ ]+/);
     setText(newText.join(" "));
+    props.showAlert("extra spaces removed", "success");
   };
 
   const handleStartCase = () => {
@@ -43,6 +49,7 @@ function TextForm(props) {
       letter.toUpperCase()
     );
     setText(newText);
+    props.showAlert("converted to startcase", "success");
   };
 
   return (
